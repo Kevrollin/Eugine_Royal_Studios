@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 0 0% 6.7%; /* Black color for primary */
+  --primary-foreground: 0 0% 100%; /* White text on primary */
+  --secondary: 43 77% 52%; /* Gold color for secondary D4AF37 */
+  --secondary-foreground: 0 0% 6.7%; /* Black text on secondary */
+  --accent: 43 77% 52%; /* Same gold accent */
+  --accent-foreground: 0 0% 6.7%; /* Black text on accent */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  --chart-1: 207 90% 54%;
+  --chart-2: 338 77% 48%;
+  --chart-3: 170 75% 41%;
+  --chart-4: 278 94% 30%;
+  --chart-5: 43 77% 52%;
+}
+
+.dark {
+  --background: 0 0% 6.7%; /* Black color for background */
+  --foreground: 0 0% 100%; /* White text on background */
+  --muted: 0 0% 16.9%; /* Dark gray for muted */
+  --muted-foreground: 0 0% 65%; /* Light gray for muted text */
+  --popover: 0 0% 6.7%; /* Black color for popover */
+  --popover-foreground: 0 0% 100%; /* White text on popover */
+  --card: 0 0% 6.7%; /* Black color for card */
+  --card-foreground: 0 0% 100%; /* White text on card */
+  --border: 0 0% 16.9%; /* Dark gray for border */
+  --input: 0 0% 16.9%; /* Dark gray for input */
+  --primary: 0 0% 17.6%; /* Darker gray for primary (for primary-light) */
+  --primary-foreground: 0 0% 100%; /* White text on primary */
+  --secondary: 43 77% 52%; /* Gold color for secondary D4AF37 */
+  --secondary-foreground: 0 0% 6.7%; /* Black text on secondary */
+  --accent: 43 77% 52%; /* Same gold accent */
+  --accent-foreground: 0 0% 6.7%; /* Black text on accent */
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 0 0% 70%;
+  --chart-1: 207 90% 54%;
+  --chart-2: 338 77% 48%;
+  --chart-3: 170 75% 41%;
+  --chart-4: 278 94% 30%;
+  --chart-5: 43 77% 52%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-inter antialiased bg-background text-foreground;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-playfair;
+  }
+}
+
+@layer components {
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+
+  .dark .glass {
+    @apply bg-black/60 border-white/5;
+  }
+
+  /* Hover effect for images */
+  .cinematic-hover {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  .cinematic-hover:hover {
+    @apply scale-103 brightness-110;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-primary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary rounded-sm;
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 1s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+
+  .animate-zoom-in {
+    animation: zoomIn 0.8s ease;
+  }
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes zoomIn {
+    0% { transform: scale(0.95); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+}
+
+@layer utilities {
+  .scale-103 {
+    transform: scale(1.03);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Font families */
+.font-playfair {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
