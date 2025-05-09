@@ -176,7 +176,7 @@ export default function Portfolio() {
   });
 
   // Filter items based on active tab and search query
-  const filteredItems = portfolioItems?.filter((item: any) => {
+  const filteredItems = (portfolioItems || []).filter((item: any) => {
     // Filter by category
     if (activeTab !== "all" && item.category !== activeTab) {
       return false;
