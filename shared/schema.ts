@@ -98,6 +98,7 @@ export const insertContactMessageSchema = createInsertSchema(contactMessages).om
 
 // Custom booking schema with zod validation
 export const bookingFormSchema = z.object({
+  // Client-side names (camelCase)
   firstName: z.string().min(2, { message: "First name must be at least 2 characters" }),
   lastName: z.string().min(2, { message: "Last name must be at least 2 characters" }),
   email: z.string().email({ message: "Please enter a valid email address" }),
@@ -110,6 +111,13 @@ export const bookingFormSchema = z.object({
   agreeToTerms: z.literal(true, {
     errorMap: () => ({ message: "You must agree to the terms and conditions" }),
   }),
+  
+  // Server-side names (snake_case)
+  first_name: z.string().min(2, { message: "First name must be at least 2 characters" }).optional(),
+  last_name: z.string().min(2, { message: "Last name must be at least 2 characters" }).optional(),
+  service_type: z.string().min(1, { message: "Please select a service type" }).optional(),
+  event_date: z.string().optional(),
+  agree_to_terms: z.boolean().optional()
 });
 
 // Custom contact form schema with zod validation

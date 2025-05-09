@@ -65,7 +65,22 @@ export default function Booking() {
 
   const onSubmit = async (data: BookingFormValues) => {
     try {
-      await apiRequest("POST", "/api/bookings", data);
+      // Convert the form data to match the API expectations
+      const bookingData = {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        service_type: data.serviceType,
+        event_date: data.eventDate ? data.eventDate.toISOString() : null,
+        location: data.location || null,
+        message: data.message || null,
+        budget: data.budget,
+        agree_to_terms: data.agreeToTerms
+      };
+      
+      console.log("Submitting booking data:", bookingData);
+      await apiRequest("POST", "/api/bookings", bookingData);
       queryClient.invalidateQueries({ queryKey: ["/api/bookings"] });
       
       toast({
@@ -76,6 +91,7 @@ export default function Booking() {
       
       form.reset();
     } catch (error) {
+      console.error("Booking submission error:", error);
       toast({
         title: "Error Submitting Booking",
         description: "There was a problem submitting your booking. Please try again.",

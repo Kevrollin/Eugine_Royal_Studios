@@ -9,11 +9,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // API route for handling booking requests
   app.post("/api/bookings", async (req, res) => {
     try {
+      console.log("Received booking data:", req.body);
+      
       // Validate incoming data
       const validatedData = bookingFormSchema.parse(req.body);
       
-      // Remove agreeToTerms field as it's not part of the booking schema
-      const { agreeToTerms, ...bookingData } = validatedData;
+      // Process data based on which format it was sent in (camelCase or snake_case)
+      let bookingData;
+      
+      if (validatedData.first_name && validatedData.last_name && validatedData.service_type) {
+        // Data is already in snake_case format
+        const { agree_to_terms, ...restData } = validatedData;
+        bookingData = restData;
+      } else {
+        // Data is in camelCase format, convert to snake_case
+        const { firstName, lastName, email, phone, serviceType, eventDate, location, message, budget, agreeToTerms, ...rest } = validatedData;
+        
+        bookingData = {
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          phone: phone,
+          service_type: serviceType,
+          event_date: eventDate ? new Date(eventDate).toISOString() : null,
+          location: location || null,
+          message: message || null,
+          budget: budget
+        };
+      }
+      
+      console.log("Processed booking data:", bookingData);
       
       // Store booking in database
       const booking = await storage.createBooking(bookingData);
@@ -27,6 +52,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Handle validation errors
       if (error instanceof ZodError) {
         const validationError = fromZodError(error);
+        console.error("Validation error:", validationError);
         return res.status(400).json({ 
           message: "Validation error", 
           errors: validationError.message 
