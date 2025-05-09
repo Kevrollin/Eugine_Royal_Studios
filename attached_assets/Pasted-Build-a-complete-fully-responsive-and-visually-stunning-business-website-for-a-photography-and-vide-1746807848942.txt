@@ -1,0 +1,133 @@
+Build a complete, fully responsive and visually stunning business website for a photography and videography brand called Eugine Ray Studios, based in Meru, Kenya.
+
+🌐 GENERAL SITE OVERVIEW
+The site should look modern, premium, and cinematic. It should feel creative but also trustworthy — something between an art portfolio and a pro booking service. Think Apple aesthetic + Netflix cinematics + local Kenyan culture vibes.
+
+🎯 CORE PAGES & SECTIONS
+Landing/Home Page
+
+Cinematic fullscreen hero section with background video or slider
+
+Logo animation with smooth loading screen (like: "Eugine Ray Studios presents...")
+
+Brief intro, call to action, featured services, testimonials
+
+Scroll animations using Framer Motion or GSAP
+
+Portfolio Page
+
+Filterable gallery by category (Weddings, Events, Fashion, Commercial, etc.)
+
+Lightbox previews for photos
+
+Embedded videos (YouTube, Vimeo)
+
+Smooth transitions and loading skeletons
+
+Booking Page
+
+Clean booking form with these fields:
+
+Name, Contact Info, Service Type (Photo/Video/Both), Preferred Date & Time, Location
+
+Integrated calendar date picker
+
+M-Pesa number input (or Stripe/PayPal if available)
+
+Backend should store bookings in a database and send a success confirmation
+
+Offers Page
+
+List current seasonal offers (auto-hide expired ones)
+
+Include countdowns for limited-time deals
+
+Editable from admin panel
+
+Contact Page
+
+Map of Meru location (Google Maps embed)
+
+Social media links
+
+Contact form (Name, Email, Message)
+
+About Page
+
+Meet the team, behind-the-scenes shots, story behind Eugine Ray Studios
+
+Blog/News Page (Optional)
+
+For SEO and content marketing: behind-the-scenes shoots, success stories, etc.
+
+🧠 FUNCTIONALITY & TECH
+FRONTEND
+Use HTML, Tailwind CSS, JavaScript (or React) for structure and design
+
+Add scroll animations and smooth transitions using GSAP or Framer Motion
+
+Mobile-first responsive design
+
+Sticky navbar with blur-on-scroll effect
+
+Dark mode toggle
+
+BACKEND
+Use Node.js + Express.js or Firebase/Supabase for backend logic
+
+Store bookings in a database
+
+Admin should receive booking notifications via email (use Nodemailer or Replit Email API)
+
+Booking success page with booking ID or success message
+
+Admin panel route (e.g., /admin) with login protection
+
+OPTIONAL INTEGRATIONS
+Google Calendar sync (for admin to see all bookings)
+
+M-Pesa API integration for real-time mobile payments
+
+Add SEO tags to all pages
+
+📁 PROJECT STRUCTURE SUGGESTION
+bash
+Copy
+Edit
+/public
+  /images
+  /videos
+/src
+  /components
+  /pages
+  /styles
+/server
+  server.js (Express backend)
+  /routes
+  /controllers
+.env
+index.html / main.jsx
+tailwind.config.js
+🔐 ADMIN PANEL
+Admin login using email/password
+
+View bookings (table format)
+
+Mark bookings as complete or cancel
+
+Add/edit portfolio items (images/videos/details)
+
+Manage offers (add new offers with date ranges)
+
+Export bookings to PDF or Word using jsPDF or docx
+
+🎨 DESIGN STYLE
+Luxurious and clean
+
+Cinematic vibes with deep blacks and soft gold highlights
+
+Use rounded corners, glassmorphism, and motion
+
+Add hover interactions and subtle glows
+
+🎉 This website should load fast, feel premium, work great on mobile, and create trust for clients booking high-end photography/video services in Kenya.
