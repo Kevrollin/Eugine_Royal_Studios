@@ -3,7 +3,8 @@ import { Booking } from '@shared/schema';
 
 // Initialize SendGrid
 const mailService = new MailService();
-mailService.setApiKey(process.env.SENDGRID_API_KEY || '');
+const apiKey = process.env.SENDGRID_API_KEY || '';
+mailService.setApiKey(apiKey);
 
 // Admin email address
 const ADMIN_EMAIL = 'kelvinmukaria2023@gmail.com';
