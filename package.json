@@ -4,9 +4,9 @@
   "type": "module",
   "license": "MIT",
   "scripts": {
-  "dev": "concurrently \"tsx server/index.ts\" \"vite\"",
+  "dev": "concurrently \"tsx api/index.ts\" \"vite\"",
   "client": "vite",
-  "server": "tsx server/index.ts",
+  "server": "tsx api/index.ts",
   "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
   "start": "NODE_ENV=production node dist/index.js",
   "check": "tsc",
